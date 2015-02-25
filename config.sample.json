@@ -1,0 +1,7 @@
+{
+  "name": "configuration-service",
+  "port": "3001",
+  "log": {
+    "level": "trace"
+  }
+}
