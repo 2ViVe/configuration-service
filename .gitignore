@@ -7,3 +7,4 @@ config-files/
 
 config.json
 job/run-reminder-job.config.json
+pm2_config.json
