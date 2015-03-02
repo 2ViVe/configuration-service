@@ -1,5 +1,5 @@
 var Lighter = require('nodejs-lighter');
-var config = require('./config.sample.json');
+var config = require('./config.json');
 
 var lighter = new Lighter(config);
 var logger = lighter.logger;
