@@ -15,7 +15,7 @@ lighter.get('/status', function (req, res, next) {
     });
 });
 
-lighter.use('/sections', require('./routers/section'));
+lighter.use('/v1/sections', require('./routers/section'));
 
 lighter.use(middlewares.responder);
 
