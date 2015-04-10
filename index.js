@@ -8,11 +8,9 @@ var middlewares = lighter.middlewares;
 lighter.use(middlewares.contextCreator());
 lighter.use(middlewares.logger(logger));
 
-lighter.get('/status', function (req, res, next) {
+lighter.get('/service-status', function (req, res) {
     req.context.logger.info('getting /status');
-    next({
-        body: {ok: true}
-    });
+    res.send(200, 'ok');
 });
 
 lighter.use('/v1/sections', require('./routers/section'));
