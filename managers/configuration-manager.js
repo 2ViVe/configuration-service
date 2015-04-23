@@ -33,12 +33,19 @@ fs.watch(configFilesDir, function (event, fileName) {
 
 function loadConfigFromFileAsync(configFileName) {
     return new Promise(function (resolve, reject) {
-        try {
-            var config = JSON.parse(fs.readFileSync(configFileName));
-            resolve(config);
-        } catch (ex) {
-            reject(ex);
-        }
+        fs.exists(configFileName, function (exists) {
+            try {
+                if (!exists) {
+                    resolve(null);
+                    return;
+                }
+
+                var config = JSON.parse(fs.readFileSync(configFileName));
+                resolve(config);
+            } catch (ex) {
+                reject(ex);
+            }
+        });
     });
 }
 
@@ -79,6 +86,8 @@ exports.getSectionValueAsync = function (context, sectionName) {
                 }
                 resolve(configValue);
             }
+        }).catch(function (error) {
+            reject(error);
         });
     });
 };
